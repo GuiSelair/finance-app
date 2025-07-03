@@ -7,12 +7,15 @@
     "packages/*"
   ],
   "devDependencies": {
+    "cypress": "^14.5.1",
     "turbo": "^2.1.2"
   },
   "scripts": {
     "build": "turbo run build",
     "lint": "turbo run lint",
     "test": "turbo run test",
+    "test:e2e": "npx cypress run",
+		"test:e2e:open": "npx cypress open",
     "dev": "turbo run dev --parallel",
     "migration:run": "turbo run migration:run --parallel",
     "container:db": "docker compose up -d datasource",

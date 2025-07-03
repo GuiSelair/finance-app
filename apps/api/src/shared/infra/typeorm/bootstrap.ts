@@ -3,6 +3,8 @@ import 'dotenv/config';
 import { DataSource } from 'typeorm';
 
 const isProduction = process.env.NODE_ENV === 'production';
+const isTest = process.env.NODE_ENV === 'test';
+
 export const DataSourceConfiguration = new DataSource({
   type: (process.env.DB_TYPE as 'postgres' | 'mysql') ?? 'postgres',
   host: process.env.DB_HOST ?? 'localhost',
@@ -10,6 +12,7 @@ export const DataSourceConfiguration = new DataSource({
   username: process.env.DB_USER ?? 'root',
   password: process.env.DB_PASSWORD ?? 'root',
   database: process.env.DB_DATABASE ?? 'finance-app',
+  schema: isTest ? 'test' : 'public',
   logging: true,
   synchronize: false,
   entities: [
