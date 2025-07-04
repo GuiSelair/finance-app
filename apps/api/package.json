@@ -7,9 +7,10 @@
     "build": "tsc && tsc-alias",
     "start": "NODE_ENV=production node ./dist/index.js",
     "dev": "NODE_ENV=development ts-node-dev --inspect --transpile-only -r tsconfig-paths/register src/index.ts",
+    "dev:e2e": "NODE_ENV=test ts-node-dev --inspect --transpile-only -r tsconfig-paths/register src/index.ts",
     "typeorm": "ts-node-dev -r tsconfig-paths/register node_modules/.bin/typeorm -d ./src/shared/infra/typeorm/bootstrap.ts",
     "migration:show": "ts-node-dev -r tsconfig-paths/register node_modules/.bin/typeorm migration:show -d ./src/shared/infra/typeorm/bootstrap.ts",
-    "migration:run": "ts-node-dev -r tsconfig-paths/register node_modules/.bin/typeorm migration:run -d ./src/shared/infra/typeorm/bootstrap.ts",
+    "migration:run": "NODE_ENV=test ts-node-dev -r tsconfig-paths/register node_modules/.bin/typeorm migration:run -d ./src/shared/infra/typeorm/bootstrap.ts",
     "migration:create": "ts-node-dev -r tsconfig-paths/register node_modules/.bin/typeorm migration:create ./src/shared/infra/typeorm/migrations/${npm_config_name}",
     "test": "jest",
     "production": "npm run migration:run && npm run build"
