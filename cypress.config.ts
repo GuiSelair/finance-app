@@ -6,8 +6,12 @@ export default defineConfig({
     supportFile: false,
 		viewportWidth: 1366,
 		viewportHeight: 768,
+		baseUrl: 'http://localhost:3000',
 		env: {
 			WEB_URL: 'http://localhost:3000',
-		}
+		},
+		setupNodeEvents(on, config) {
+			// implement node event listeners here
+		},
   },
 });

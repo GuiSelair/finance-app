@@ -8,18 +8,24 @@
   ],
   "devDependencies": {
     "cypress": "^14.5.1",
+    "start-server-and-test": "^2.0.12",
     "turbo": "^2.1.2"
   },
   "scripts": {
     "build": "turbo run build",
     "lint": "turbo run lint",
     "test": "turbo run test",
-    "test:e2e": "npx cypress run",
-		"test:e2e:open": "npx cypress open",
+    "test:e2e": "start-server-and-test dev :3000 'npx cypress run'",
+    "test:e2e:open": "start-server-and-test dev :3000 'npx cypress open'",
     "dev": "turbo run dev --parallel",
     "migration:run": "turbo run migration:run --parallel",
     "container:db": "docker compose up -d datasource",
     "container:up": "docker compose up -d datasource api web",
-    "container:down": "docker compose stop"
+    "container:down": "docker compose stop",
+    "posttest:e2e": "npm run container:down",
+    "pretest:e2e": "npm run container:db && npm run migration:run",
+		"pretest:e2e:open": "npm run container:db && npm run migration:run",
+		"posttest:e2e:open": "npm run container:down",
+    "ci": "start-server-and-test dev :3000 'npx cypress run'"
   }
 }
