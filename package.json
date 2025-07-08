@@ -20,13 +20,15 @@
     "dev": "turbo run dev --parallel",
     "dev:e2e": "turbo run dev:e2e --parallel",
     "migration:run": "turbo run migration:run --parallel",
+    "migration:run:e2e": "turbo run migration:run:e2e --parallel",
+    "cleanup:e2e": "turbo run cleanup:e2e --parallel",
     "container:db": "docker compose up -d datasource",
     "container:up": "docker compose up -d datasource api web",
     "container:down": "docker compose stop",
-    "posttest:e2e": "npm run container:down",
-    "pretest:e2e": "npm run container:db && npm run migration:run",
-		"pretest:e2e:open": "npm run container:db && npm run migration:run",
-		"posttest:e2e:open": "npm run container:down",
+    "pretest:e2e": "npm run container:db && npm run migration:run:e2e",
+    "posttest:e2e": "npm run cleanup:e2e && npm run container:down",
+    "pretest:e2e:open": "npm run container:db && npm run migration:run:e2e",
+    "posttest:e2e:open": "npm run cleanup:e2e && npm run container:down",
     "ci": "start-server-and-test dev :3000 'npx cypress run'"
   }
 }
