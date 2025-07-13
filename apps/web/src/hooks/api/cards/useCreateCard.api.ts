@@ -9,7 +9,7 @@ export function useCreateCardApi() {
 	return useMutation(
 		['cards'],
 		async (data: CreateCardFieldsType) => {
-			await httpClient.post('/cards', {
+			return httpClient.post('/cards', {
 				body: {
 					name: data.name,
 					flag: data.flag.value,

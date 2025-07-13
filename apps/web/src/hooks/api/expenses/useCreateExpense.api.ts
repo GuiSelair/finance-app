@@ -42,9 +42,8 @@ export function useCreateExpenseApi() {
 			return response.data;
 		},
 		{
-			onError: error => {
+			onError: () => {
 				toast.error('Erro ao criar despesa! Tente novamente');
-				console.log(error);
 			},
 		},
 	);

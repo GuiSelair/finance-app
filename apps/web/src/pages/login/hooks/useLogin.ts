@@ -21,11 +21,11 @@ export function useLogin() {
 			email: data.email,
 			password: data.password,
 		});
-		setIsAuthenticating(false);
 
 		if (isLoginSuccessfull) {
 			await router.push('/');
 		}
+		setIsAuthenticating(false);
 	}
 
 	const handleFormSubmit = formSchema.handleSubmit(handleLoginSubmit);

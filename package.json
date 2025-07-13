@@ -7,6 +7,7 @@
     "packages/*"
   ],
   "devDependencies": {
+    "@faker-js/faker": "^9.9.0",
     "cypress": "^14.5.1",
     "start-server-and-test": "^2.0.12",
     "turbo": "^2.1.2"
@@ -25,10 +26,10 @@
     "container:db": "docker compose up -d datasource",
     "container:up": "docker compose up -d datasource api web",
     "container:down": "docker compose stop",
-    "pretest:e2e": "npm run container:db && npm run migration:run:e2e",
-    "posttest:e2e": "npm run cleanup:e2e && npm run container:down",
+    "pretest:e2e": "npm run migration:run:e2e",
+    "posttest:e2e": "npm run cleanup:e2e",
     "pretest:e2e:open": "npm run container:db && npm run migration:run:e2e",
-    "posttest:e2e:open": "npm run cleanup:e2e && npm run container:down",
+    "posttest:e2e:open": "npm run cleanup:e2e",
     "ci": "start-server-and-test dev :3000 'npx cypress run'"
   }
 }

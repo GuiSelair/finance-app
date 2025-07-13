@@ -7,7 +7,7 @@ import { useRouter } from 'next/navigation';
 
 export function useCreateSharePeople() {
 	const router = useRouter();
-	const { mutateAsync: handleCreateSharePeople } = useCreateSharePeopleApi();
+	const { mutate } = useCreateSharePeopleApi();
 
 	const formMethods = useForm<SharePeopleFormType>({
 		resolver: yupResolver(sharePeopleFormSchema),
@@ -18,6 +18,14 @@ export function useCreateSharePeople() {
 
 	function handleCancel() {
 		router.push('/dividers/share-people');
+	}
+
+	function handleCreateSharePeople(data: SharePeopleFormType) {
+		mutate(data, {
+			onSuccess: () => {
+				router.push('/dividers/share-people');
+			},
+		});
 	}
 
 	return {

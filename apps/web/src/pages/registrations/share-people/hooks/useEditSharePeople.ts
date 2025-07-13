@@ -10,7 +10,7 @@ export function useEditSharePeople() {
 	const router = useRouter();
 	const params = useParams<{ id: string }>();
 	const sharePeopleId = Number(params?.id);
-	const { mutateAsync: editSharePeopleFn } = useEditSharePeopleApi();
+	const { mutate: editSharePeopleFn } = useEditSharePeopleApi();
 	const { data: sharePersonContent, isLoading } = useFindSharePeopleApi({ sharePeopleId });
 
 	// @ts-expect-error - Desabilita erro para preencher com valores default
@@ -31,9 +31,15 @@ export function useEditSharePeople() {
 		router.push('/dividers/share-people');
 	}
 
-	async function handleEditSharePeople(formData: SharePeopleFormType) {
-		await editSharePeopleFn({ ...formData, id: sharePeopleId });
-		router.push('/dividers/share-people');
+	function handleEditSharePeople(formData: SharePeopleFormType) {
+		editSharePeopleFn(
+			{ ...formData, id: sharePeopleId },
+			{
+				onSuccess: () => {
+					router.push('/dividers/share-people');
+				},
+			},
+		);
 	}
 
 	return {

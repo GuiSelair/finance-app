@@ -3,7 +3,7 @@ import type { InferType } from 'yup';
 import { AVAILABLE_CARDS_OPTIONS } from './availableCardsOptions';
 
 export const createCardFormSchema = Yup.object().shape({
-	name: Yup.string().required('Campo obrigatório'),
+	name: Yup.string().max(20, 'Máximo de 20 caracteres').required('Campo obrigatório'),
 	flag: Yup.object()
 		.shape({
 			label: Yup.string().required(),

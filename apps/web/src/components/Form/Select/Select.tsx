@@ -56,6 +56,7 @@ export const Select = forwardRef<ElementRef<typeof ReactSelect>, SelectProps>(fu
 				}),
 			}}
 			noOptionsMessage={() => 'Nenhuma opção encontrada'}
+			classNamePrefix="select"
 			{...rest}
 		/>
 	);

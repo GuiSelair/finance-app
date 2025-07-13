@@ -45,6 +45,7 @@ export default function CreateCardsPage() {
 										control={control}
 										render={({ field }) => (
 											<Select
+												id="flag"
 												placeholder="Selecione a bandeira do cartão..."
 												options={availableCardsOptions}
 												{...field}
