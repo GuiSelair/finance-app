@@ -32,7 +32,7 @@ export async function cleanupTestSchema(): Promise<void> {
       `);
     }
   } catch (error) {
-    console.error('❌ Error cleaning test schema:', error);
+    console.error('❌ Erro ao limpar o esquema de testes:', error);
     throw error;
   } finally {
     await tempDataSource.destroy();
@@ -49,7 +49,7 @@ async function cleanupTestDatabase() {
 
     process.exit(0);
   } catch (error) {
-    console.error('❌ Error cleaning test database:', error);
+    console.error('❌ Erro ao limpar o banco de dados para testes:', error);
     process.exit(1);
   }
 }

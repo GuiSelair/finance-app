@@ -11,7 +11,7 @@
     "typeorm": "ts-node-dev -r tsconfig-paths/register node_modules/.bin/typeorm -d ./src/shared/infra/typeorm/bootstrap.ts",
     "migration:show": "ts-node-dev -r tsconfig-paths/register node_modules/.bin/typeorm migration:show -d ./src/shared/infra/typeorm/bootstrap.ts",
     "migration:run": "ts-node-dev -r tsconfig-paths/register node_modules/.bin/typeorm migration:run -d ./src/shared/infra/typeorm/bootstrap.ts",
-    "migration:run:e2e": "NODE_ENV=test ts-node-dev -r tsconfig-paths/register src/shared/infra/typeorm/bootsrapt-e2e.ts",
+    "migration:run:e2e": "NODE_ENV=test ts-node-dev -r tsconfig-paths/register src/shared/infra/typeorm/bootstrap-e2e.ts",
     "migration:create": "ts-node-dev -r tsconfig-paths/register node_modules/.bin/typeorm migration:create ./src/shared/infra/typeorm/migrations/${npm_config_name}",
     "test": "jest",
     "production": "npm run migration:run && npm run build",

@@ -40,10 +40,10 @@ async function initTestDatabase() {
       ON CONFLICT (email) DO NOTHING;
     `);
 
-    console.log('✅ Test database initialized successfully');
+    console.log('✅ Banco de dados para testes inicializado com sucesso');
     process.exit(0);
   } catch (error) {
-    console.error('❌ Error initializing test database:', error);
+    console.error('❌ Erro ao inicializar banco de dados para testes:', error);
     process.exit(1);
   }
 }
