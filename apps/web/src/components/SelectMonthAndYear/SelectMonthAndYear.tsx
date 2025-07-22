@@ -35,6 +35,7 @@ export function SelectMonthAndYear() {
 	return (
 		<SelectMonthAndYearContainer>
 			<Select
+				id="month"
 				options={monthOptions}
 				value={currentMonthOption}
 				placeholder="Mês"
@@ -44,6 +45,7 @@ export function SelectMonthAndYear() {
 				onChange={newValue => handleSelectMonth(newValue as SelectOptionProps)}
 			/>
 			<Select
+				id="year"
 				options={yearOptions}
 				value={currentYearOption}
 				placeholder="Ano"

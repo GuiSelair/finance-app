@@ -10,7 +10,7 @@ import { useDisableSharePeopleApi } from '@/hooks/api/sharePeople/useDisableShar
 export function useSharePeopleList() {
 	const router = useRouter();
 	const { data: sharePeopleResponse, isLoading: isLoadingSharePeople, isError } = useFetchSharePeopleApi();
-	const { mutateAsync: disableSharePeopleFn, isLoading: isDisabling } = useDisableSharePeopleApi();
+	const { mutate: disableSharePeopleFn, isLoading: isDisabling } = useDisableSharePeopleApi();
 
 	const sharePeopleList = useMemo(() => {
 		return (
@@ -24,6 +24,7 @@ export function useSharePeopleList() {
 					actions: (
 						<Flex margin="0 0 0 4px" gap="0.5rem">
 							<Button
+								aria-label="Editar"
 								variant="ghost"
 								size="icon"
 								onClick={() => router.push(`/registrations/share-people/${sharePerson.id}`)}
@@ -32,6 +33,7 @@ export function useSharePeopleList() {
 								<PencilSimpleIcon />
 							</Button>
 							<Button
+								aria-label="Desabilitar"
 								variant="dangerGhost"
 								size="icon"
 								onClick={() => disableSharePeopleFn(sharePerson.id)}

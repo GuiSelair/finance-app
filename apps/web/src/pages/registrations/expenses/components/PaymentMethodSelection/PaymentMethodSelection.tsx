@@ -49,6 +49,7 @@ export default function PaymentMethodSelectionSection({ isEditMode }: PaymentMet
 						control={control}
 						render={({ field }) => (
 							<Select
+								id="paymentMethod"
 								isLoading={isLoading}
 								placeholder="Selecione o meio de pagamento"
 								options={paymentMethodsOptions ?? []}

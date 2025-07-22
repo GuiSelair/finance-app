@@ -58,11 +58,11 @@ export function useDashboard() {
 	};
 
 	const deleteExpense: DeleteExpenseFunction = () => {
-		const { mutateAsync, isLoading } = useDeleteExpenseApi();
+		const { mutate, isLoading } = useDeleteExpenseApi();
 
 		return {
 			isDeleting: isLoading,
-			executeDelete: mutateAsync as (args: UseDeleteExpenseApiInput) => Promise<void>,
+			executeDelete: mutate as (args: UseDeleteExpenseApiInput) => Promise<void>,
 		};
 	};
 

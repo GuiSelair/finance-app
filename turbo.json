@@ -19,9 +19,24 @@
             "persistent": true,
             "dependsOn": ["^build"]
         },
+        "dev:e2e": {
+            "cache": false,
+            "persistent": true,
+            "dependsOn": ["^build"]
+        },
         "migration:run": {
             "cache": false,
             "persistent": true,
+            "dependsOn": ["^build"]
+        },
+        "migration:run:e2e": {
+            "cache": false,
+            "persistent": false,
+            "dependsOn": ["^build"]
+        },
+        "cleanup:e2e": {
+            "cache": false,
+            "persistent": false,
             "dependsOn": ["^build"]
         }
     }

@@ -11,14 +11,14 @@ export function useCreateCards() {
 	const formSchema = useForm<CreateCardFieldsType>({
 		resolver: yupResolver(createCardFormSchema),
 	});
-	const { mutateAsync, isLoading: isCreating, isSuccess } = useCreateCardApi();
+	const { mutate, isLoading: isCreating } = useCreateCardApi();
 
-	async function handleCreateCard(data: CreateCardFieldsType) {
-		await mutateAsync(data);
-
-		if (isSuccess) {
-			router.push('/');
-		}
+	function handleCreateCard(data: CreateCardFieldsType) {
+		mutate(data, {
+			onSuccess: () => {
+				router.push('/');
+			},
+		});
 	}
 
 	function handleCancel() {

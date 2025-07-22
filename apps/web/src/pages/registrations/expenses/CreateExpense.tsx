@@ -87,7 +87,7 @@ export default function CreateExpensePage() {
 								<Controller
 									name="isSplit"
 									render={({ field: { value, ...field } }) => (
-										<Switch isDisabled={isExpenseAmountNonFilled} checked={value} {...field} />
+										<Switch id="isSplit" isDisabled={isExpenseAmountNonFilled} checked={value} {...field} />
 									)}
 								/>
 							</Flex>

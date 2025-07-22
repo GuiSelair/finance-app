@@ -42,7 +42,12 @@ export function FormSharePeople({ formMethods }: FormSharePeopleProps) {
 						control={control}
 						render={({ field }) => {
 							return (
-								<Select placeholder="Selecione o melhor dia" options={betterDaysToSendInvoiceOptions} {...field} />
+								<Select
+									id="betterDayToSendInvoice"
+									placeholder="Selecione o melhor dia"
+									options={betterDaysToSendInvoiceOptions}
+									{...field}
+								/>
 							);
 						}}
 					/>

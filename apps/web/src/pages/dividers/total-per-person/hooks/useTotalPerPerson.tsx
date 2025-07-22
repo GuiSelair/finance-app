@@ -55,12 +55,12 @@ export function useTotalPerPerson() {
 						`_${index + 1}. ${expense.name} [${formatParcel(
 							expense.currentParcel,
 							expense.totalParcel,
-						)}]: R$ ${formatCurrency(expense.amount)}`,
+						)}]: ${formatCurrency(expense.amount)}`,
 				)
 				.join('\n')}
 
 			---------------
-			_Referente ao ${month}/${year}_
+			_Referente ao ${month + 1}/${year}_
 		`;
 
 		window.open(`${whatsappLink}?text=${template}`, '_blank');

@@ -89,6 +89,7 @@ export function ShareExpenseSection() {
 									control={control}
 									render={({ field }) => (
 										<Select
+											id="sharePerson"
 											placeholder="Selecione a pessoa a ser cobrada"
 											options={sharePeopleOptions || []}
 											isLoading={isLoadingSharePeople}
@@ -124,6 +125,7 @@ export function ShareExpenseSection() {
 						</InputLabel>
 					</Flex>
 					<Button
+						aria-label="Adicionar pessoa a ser cobrada"
 						size="sm"
 						type="button"
 						variant="outline"

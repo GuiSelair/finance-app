@@ -1,7 +1,7 @@
 declare global {
   namespace NodeJS {
     interface ProcessEnv {
-      NODE_ENV?: 'development' | 'production';
+      NODE_ENV?: 'development' | 'production' | 'test';
 
       /** Datasource configuration */
       DB_HOST?: string;
