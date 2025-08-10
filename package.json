@@ -1,35 +1,35 @@
 {
-  "name": "finance-app",
-  "packageManager": "npm@10.5.2",
-  "private": true,
-  "workspaces": [
-    "apps/*",
-    "packages/*"
-  ],
-  "devDependencies": {
-    "@faker-js/faker": "^9.9.0",
-    "cypress": "^14.5.1",
-    "start-server-and-test": "^2.0.12",
-    "turbo": "^2.1.2"
-  },
-  "scripts": {
-    "build": "turbo run build",
-    "lint": "turbo run lint",
-    "test": "turbo run test",
-    "test:e2e": "start-server-and-test dev:e2e :3000 'npx cypress run'",
-    "test:e2e:open": "start-server-and-test dev:e2e :3000 'npx cypress open'",
-    "dev": "turbo run dev --parallel",
-    "dev:e2e": "turbo run dev:e2e --parallel",
-    "migration:run": "turbo run migration:run --parallel",
-    "migration:run:e2e": "turbo run migration:run:e2e --parallel",
-    "cleanup:e2e": "turbo run cleanup:e2e --parallel",
-    "container:db": "docker compose up -d datasource",
-    "container:up": "docker compose up -d datasource api web",
-    "container:down": "docker compose stop",
-    "pretest:e2e": "npm run migration:run:e2e",
-    "posttest:e2e": "npm run cleanup:e2e",
-    "pretest:e2e:open": "npm run container:db && npm run migration:run:e2e",
-    "posttest:e2e:open": "npm run cleanup:e2e",
-    "ci": "start-server-and-test dev :3000 'npx cypress run'"
-  }
+	"name": "finance-app",
+	"packageManager": "npm@10.5.2",
+	"private": true,
+	"workspaces": [
+		"apps/*",
+		"packages/*"
+	],
+	"devDependencies": {
+		"@faker-js/faker": "^9.9.0",
+		"cypress": "^14.5.1",
+		"start-server-and-test": "^2.0.12",
+		"turbo": "^2.1.2"
+	},
+	"scripts": {
+		"build": "turbo run build",
+		"lint": "turbo run lint",
+		"test": "turbo run test",
+		"test:e2e": "start-server-and-test dev:e2e :3333 'npx cypress run'",
+		"test:e2e:open": "start-server-and-test dev:e2e :3000 'npx cypress open'",
+		"dev": "turbo run dev --parallel",
+		"dev:e2e": "turbo run dev:e2e --parallel",
+		"migration:run": "turbo run migration:run --parallel",
+		"migration:run:e2e": "turbo run migration:run:e2e --parallel",
+		"cleanup:e2e": "turbo run cleanup:e2e --parallel",
+		"container:db": "docker compose up -d datasource",
+		"container:up": "docker compose up -d datasource api web",
+		"container:down": "docker compose stop",
+		"pretest:e2e": "npm run migration:run:e2e",
+		"posttest:e2e": "npm run cleanup:e2e",
+		"pretest:e2e:open": "npm run container:db && npm run migration:run:e2e",
+		"posttest:e2e:open": "npm run cleanup:e2e",
+		"ci": "start-server-and-test dev :3000 'npx cypress run'"
+	}
 }

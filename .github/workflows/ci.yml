@@ -88,20 +88,4 @@ jobs:
         with:
           name: cypress-screenshots
           path: e2e/screenshots/
-          retention-days: 7
-
-  test-status:
-    name: Test Status
-    runs-on: ubuntu-latest
-    needs: [unit-tests, e2e-tests]
-    if: always()
-
-    steps:
-      - name: Check test results
-        run: |
-          if [ "${{ needs.unit-tests.result }}" == "failure" ] || [ "${{ needs.e2e-tests.result }}" == "failure" ]; then
-            echo "❌ Há testes quebrados"
-            exit 1
-          else
-            echo "✅ Todos os testes passaram"
-          fi
+          retention-days: 1
