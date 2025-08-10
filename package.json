@@ -16,8 +16,8 @@
 		"build": "turbo run build",
 		"lint": "turbo run lint",
 		"test": "turbo run test",
-		"test:e2e": "start-server-and-test dev:e2e :3333 'npx cypress run'",
-		"test:e2e:open": "start-server-and-test dev:e2e :3000 'npx cypress open'",
+		"test:e2e": "start-server-and-test dev:e2e http://localhost:3333/ 'npx cypress run'",
+		"test:e2e:open": "start-server-and-test dev:e2e http://localhost:3333/ 'npx cypress open'",
 		"dev": "turbo run dev --parallel",
 		"dev:e2e": "turbo run dev:e2e --parallel",
 		"migration:run": "turbo run migration:run --parallel",
@@ -30,6 +30,6 @@
 		"posttest:e2e": "npm run cleanup:e2e",
 		"pretest:e2e:open": "npm run container:db && npm run migration:run:e2e",
 		"posttest:e2e:open": "npm run cleanup:e2e",
-		"ci": "start-server-and-test dev :3000 'npx cypress run'"
+		"ci": "start-server-and-test dev http://localhost:3333/ 'npx cypress run'"
 	}
 }
