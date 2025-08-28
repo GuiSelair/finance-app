@@ -16,7 +16,7 @@
 		"build": "turbo run build",
 		"lint": "turbo run lint",
 		"test": "turbo run test",
-		"test:e2e": "start-server-and-test dev:e2e \"http-get://localhost:3000|http-get://localhost:3333\" 'npx cypress run'",
+		"test:e2e": "start-server-and-test dev:e2e \"http-get://localhost:3000\" 'npx cypress run'",
 		"test:e2e:open": "start-server-and-test dev:e2e http://localhost:3333/ 'npx cypress open'",
 		"dev": "turbo run dev --parallel",
 		"dev:e2e": "turbo run dev:e2e --parallel",
