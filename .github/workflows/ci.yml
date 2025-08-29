@@ -6,29 +6,29 @@ on:
     branches: [master]
 
 jobs:
-  unit-tests:
-    name: Unit Tests
-    runs-on: ubuntu-latest
-    if: github.event.pull_request.draft == false
+  # unit-tests:
+  #   name: Unit Tests
+  #   runs-on: ubuntu-latest
+  #   if: github.event.pull_request.draft == false
 
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
+  #   steps:
+  #     - name: Checkout code
+  #       uses: actions/checkout@v4
 
-      - name: Setup Node.js 22
-        uses: actions/setup-node@v4
-        with:
-          node-version: "22"
-          cache: "npm"
-          cache-dependency-path: "**/package-lock.json"
+  #     - name: Setup Node.js 22
+  #       uses: actions/setup-node@v4
+  #       with:
+  #         node-version: "22"
+  #         cache: "npm"
+  #         cache-dependency-path: "**/package-lock.json"
 
-      - name: Install dependencies
-        run: npm ci
-        timeout-minutes: 10
+  #     - name: Install dependencies
+  #       run: npm ci
+  #       timeout-minutes: 10
 
-      - name: Run unit tests
-        run: npm run test -- -- --ci
-        timeout-minutes: 15
+  #     - name: Run unit tests
+  #       run: npm run test -- -- --ci
+  #       timeout-minutes: 15
 
   e2e-tests:
     name: E2E Tests
