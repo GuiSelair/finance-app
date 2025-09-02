@@ -4,7 +4,6 @@
 	"private": true,
 	"scripts": {
 		"dev": "next dev",
-		"dev:e2e": "next start",
 		"build": "next build",
 		"start": "next start",
 		"lint": "npm eslint --fix"
