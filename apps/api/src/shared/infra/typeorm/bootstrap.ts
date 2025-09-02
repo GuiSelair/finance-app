@@ -13,10 +13,10 @@ export const DataSourceConfiguration = new DataSource({
   password: process.env.DB_PASSWORD ?? 'root',
   database: process.env.DB_DATABASE ?? 'finance-app',
   schema: isTest ? 'test' : 'public',
-  logging: true,
+  logging: !isTest,
   synchronize: false,
   entities: [
-    isProduction
+    isProduction || isTest
       ? 'dist/modules/**/infra/typeorm/entities/*{.ts,.js}'
       : 'src/modules/**/infra/typeorm/entities/*{.ts,.js}',
   ],

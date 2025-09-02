@@ -9,6 +9,9 @@ import shareExpensePerson from '@modules/ShareExpensePerson/infra/http/routes/sh
 
 const routes = Router();
 
+routes.get('/', (_, res) => {
+  return res.status(200).send('ok');
+});
 routes.use('/users', usersRoutes);
 routes.use('/auth', authRoutes);
 routes.use('/cards', cardsRoutes);

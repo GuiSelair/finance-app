@@ -1,0 +1,111 @@
+name: CI Pipeline
+"on":
+  pull_request:
+    types:
+      - opened
+      - synchronize
+      - reopened
+    branches:
+      - master
+jobs:
+  unit-tests:
+    name: Unit Tests
+    runs-on: ubuntu-latest
+    if: github.event.pull_request.draft == false
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js 22
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: "npm"
+          cache-dependency-path: "**/package-lock.json"
+
+      - name: Install dependencies
+        run: npm ci
+        timeout-minutes: 10
+
+      - name: Run unit tests
+        run: npm run test -- -- --ci
+        timeout-minutes: 15
+
+  e2e-tests:
+    name: E2E Tests
+    runs-on: ubuntu-latest
+    if: github.event.pull_request.draft == false
+    services:
+      postgres:
+        image: "postgres:15"
+        env:
+          POSTGRES_PASSWORD: root
+          POSTGRES_USER: root
+          POSTGRES_DB: finance-app
+        options: >-
+          --health-cmd pg_isready --health-interval 10s --health-timeout 5s
+          --health-retries 5
+        ports:
+          - "5432:5432"
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js 22
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: npm
+          cache-dependency-path: "**/package-lock.json"
+
+      - name: Install dependencies
+        run: npm ci
+        timeout-minutes: 10
+
+      - name: Cache Cypress
+        uses: actions/cache@v4
+        with:
+          path: |
+            ~/.cache/Cypress
+            node_modules/cypress
+          key: cypress-cache-${{ runner.os }}-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            cypress-cache-${{ runner.os }}-
+
+      - name: Setup environment variables
+        run: |
+          echo "DB_HOST=localhost" >> $GITHUB_ENV
+          echo "DB_PORT=5432" >> $GITHUB_ENV
+          echo "DB_USER=root" >> $GITHUB_ENV
+          echo "DB_PASSWORD=root" >> $GITHUB_ENV
+          echo "DB_DATABASE=finance-app" >> $GITHUB_ENV
+          echo "NODE_ENV=test" >> $GITHUB_ENV
+          echo "NEXT_PUBLIC_LOCALSTORAGE_PREFIX_KEY=@finance_app" >> $GITHUB_ENV
+          echo "NEXT_PUBLIC_API_BASE_URL=http://localhost:3333/" >> $GITHUB_ENV
+          echo "JWT_SECRET=fake-jwt-secret" >> $GITHUB_ENV
+          echo "JWT_EXPIRE_IN=1d" >> $GITHUB_ENV
+
+      - name: Wait for PostgreSQL
+        run: |
+          timeout 60 bash -c 'until nc -z localhost 5432; do sleep 1; done'
+
+      - name: Build web
+        run: npm run build --workspace=web
+        timeout-minutes: 5
+
+      - name: Build api
+        run: npm run build --workspace=api
+        timeout-minutes: 5
+
+      - name: Run E2E tests
+        run: "npm run test:e2e"
+        timeout-minutes: 10
+
+      - name: Upload Cypress screenshots on failure
+        uses: actions/upload-artifact@v4
+        if: failure()
+        with:
+          name: cypress-screenshots
+          path: e2e/screenshots/
+          retention-days: 1
