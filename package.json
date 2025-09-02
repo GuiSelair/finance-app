@@ -14,9 +14,9 @@
 	},
 	"scripts": {
 		"build": "turbo run build",
+		"dev": "turbo run dev --parallel",
 		"lint": "turbo run lint",
 		"test": "turbo run test",
-		"dev": "turbo run dev --parallel",
 		"migration:run": "turbo run migration:run --parallel",
 		"migration:run:e2e": "turbo run migration:run:e2e --parallel",
 		"container:db": "docker compose up -d datasource",
