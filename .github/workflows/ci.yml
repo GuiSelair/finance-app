@@ -46,6 +46,8 @@ jobs:
           echo "NODE_ENV=test" >> $GITHUB_ENV
             echo "NEXT_PUBLIC_LOCALSTORAGE_PREFIX_KEY=@finance_app" >> $GITHUB_ENV
             echo "NEXT_PUBLIC_API_BASE_URL=http://localhost:3333/" >> $GITHUB_ENV
+            echo "JWT_SECRET=fake-jwt-secret" >> $GITHUB_ENV
+            echo "JWT_EXPIRE_IN=1d" >> $GITHUB_ENV
       - name: Wait for PostgreSQL
         run: |
           timeout 60 bash -c 'until nc -z localhost 5432; do sleep 1; done'
