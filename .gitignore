@@ -2,3 +2,4 @@ node_modules
 apps/**/dist
 .turbo
 .vscode
+.idea
