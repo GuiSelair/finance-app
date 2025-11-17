@@ -13,6 +13,7 @@ interface EditExpenseMonthDTO {
   valuesToChange: {
     name?: string;
     description?: string;
+    amount?: number;
     value_of_parcel?: number;
     is_paid?: boolean;
     card_id?: string;
@@ -45,7 +46,7 @@ export class EditExpenseMonthService {
       }
     }
 
-    if ('name' in valuesToChange || 'description' in valuesToChange || 'card_id' in valuesToChange ) {
+    if ('name' in valuesToChange || 'description' in valuesToChange || 'card_id' in valuesToChange || 'amount' in valuesToChange ) {
       await this.expensesRepository.update({ id: expenseMonthFound.expense_id, data: expenseMonthModel.expense! });
     }
 
@@ -65,6 +66,7 @@ export class EditExpenseMonthService {
         name: data.valuesToChange.name,
         description: data.valuesToChange.description,
         card_id: data.valuesToChange.card_id,
+        amount: data.valuesToChange.amount,
       }, 'partial')
     }, 'partial')
   }
