@@ -7,6 +7,7 @@ interface IEditExpenseParams {
 	cardId?: string;
 	isRecurring?: boolean;
 	parcelValue?: number;
+	totalValue?: number;
 }
 
 export function useEditExpenseApi(expenseId: string) {
@@ -19,6 +20,7 @@ export function useEditExpenseApi(expenseId: string) {
 					value_of_parcel: expenseToEdit.parcelValue,
 					card_id: expenseToEdit.cardId,
 					is_recurring: expenseToEdit.isRecurring,
+					amount: expenseToEdit.totalValue,
 				},
 			});
 		},

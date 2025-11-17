@@ -62,7 +62,7 @@ export default function EditExpensePage() {
 							<div>
 								<InputLabel>
 									Valor total:
-									<ValueInput prefix="R$" error={errors.totalValue?.message} disabled {...register('totalValue')} />
+									<ValueInput prefix="R$" error={errors.totalValue?.message} {...register('totalValue')} />
 								</InputLabel>
 							</div>
 							<div>

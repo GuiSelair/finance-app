@@ -38,6 +38,7 @@ export function useEditExpense() {
 			...(!!dirtyFields?.parcelValue && { parcelValue: data.parcelValue }),
 			...(!!dirtyFields?.paymentMethod && { cardId: data.paymentMethod.value }),
 			...(!!dirtyFields?.isRecurring && { isRecurring: data.isRecurring }),
+			...(!!dirtyFields?.totalValue && { totalValue: data.totalValue }),
 		});
 		toast.success('Despesa editada com sucesso!');
 		router.push('/');

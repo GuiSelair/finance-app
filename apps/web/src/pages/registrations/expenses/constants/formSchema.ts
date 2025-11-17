@@ -8,13 +8,11 @@ export const createFormExpenseFormSchema = (isEditMode = false) => {
 		purchaseDate: Yup.string().required(requiredFieldMessage),
 		manualExpenseDate: isEditMode ? Yup.string() : Yup.string().required(requiredFieldMessage),
 		category: Yup.string(),
-		totalValue: isEditMode
-			? Yup.number()
-			: Yup.number()
-					.typeError('Campo inválido')
-					.required(requiredFieldMessage)
-					.positive('Valor inválido')
-					.transform((_, originalValue) => Number(String(originalValue)?.replace(',', '.'))),
+		totalValue: Yup.number()
+			.typeError('Campo inválido')
+			.required(requiredFieldMessage)
+			.positive('Valor inválido')
+			.transform((_, originalValue) => Number(String(originalValue)?.replace(',', '.'))),
 		parcelQuantity: Yup.number().required(requiredFieldMessage),
 		paymentMethod: Yup.object()
 			.shape({
