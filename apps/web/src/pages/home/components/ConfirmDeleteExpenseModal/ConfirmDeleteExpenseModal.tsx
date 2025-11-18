@@ -27,6 +27,7 @@ export function ConfirmDeleteExpenseModal({
 	const { executeDelete, isDeleting } = onDeleteExpense();
 
 	const hasMultipleParcels = expense?.quantityParcel > 1;
+	const isRecurringExpense = expense?.expense?.isRecurring ?? false;
 
 	async function handleDelete(isDeleteOne = false) {
 		await executeDelete({
@@ -49,13 +50,13 @@ export function ConfirmDeleteExpenseModal({
 				<Button variant="link" onClick={handleClose}>
 					Cancelar
 				</Button>
-				{hasMultipleParcels && (
+				{(hasMultipleParcels || isRecurringExpense) && (
 					<DeleteAllParcelsButton variant="outline" isLoading={isDeleting} onClick={() => handleDelete(false)}>
 						Excluir todas as parcelas
 					</DeleteAllParcelsButton>
 				)}
 				<Button variant="danger" isLoading={isDeleting} onClick={() => handleDelete(true)}>
-					{hasMultipleParcels ? 'Excluir apenas esta parcela' : 'Excluir parcela'}
+					Excluir parcela
 				</Button>
 			</ConfirmDeleteExpenseFooterContainer>
 		</BaseModal>
