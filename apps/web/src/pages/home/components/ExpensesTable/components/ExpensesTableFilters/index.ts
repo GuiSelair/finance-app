@@ -1,1 +1,1 @@
-export { ExpensesFilters } from './ExpensesTableFilters';
+export { ExpensesTableFilters } from './ExpensesTableFilters';
