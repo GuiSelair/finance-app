@@ -46,7 +46,7 @@ export function Header(): JSX.Element {
 				<SystemOptions>
 					<Dropmenu.Root>
 						<Dropmenu.Trigger>
-							<Image src="http://www.github.com/guiselair.png" alt="" width={48} height={48} />
+							<Image src="https://www.github.com/guiselair.png" alt="" width={48} height={48} />
 						</Dropmenu.Trigger>
 						<Dropmenu.Content>
 							<Dropmenu.Item onSelect={onSignOut}>
