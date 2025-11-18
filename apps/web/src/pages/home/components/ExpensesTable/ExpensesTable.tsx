@@ -17,7 +17,7 @@ import type { DeleteExpenseFunction, FetchExpensesFunction } from '../../hooks/u
 import { ConfirmDeleteExpenseModal } from '../ConfirmDeleteExpenseModal';
 import { ExpenseDetailsModal } from '../ExpenseDetailsModal';
 import { DeleteOptionButton, OptionButtonsContainer } from './ExpensesTable.styles';
-import { ExpensesFilters } from './components/ExpensesTableFilters';
+import { ExpensesTableFilters } from './components/ExpensesTableFilters';
 
 export interface IExpensesTableData {
 	name: string;
@@ -110,7 +110,7 @@ export default function ExpensesTable({ fetchExpenses, deleteExpense }: Readonly
 
 	return (
 		<>
-			<ExpensesFilters />
+			<ExpensesTableFilters expenses={expensesInMonth} />
 			<DataTable columns={expensesTableColumns} data={expensesTableData} />
 			<ExpenseDetailsModal
 				isOpenModal={isOpenExpenseDetailsModal}

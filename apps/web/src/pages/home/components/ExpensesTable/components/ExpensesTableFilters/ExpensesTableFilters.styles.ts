@@ -5,11 +5,26 @@ import { Flex } from '@/components';
 
 export const FilterContainer = styled.section`
 	display: flex;
+	flex-direction: column;
 	align-items: center;
 	background: ${props => props.theme.colors.green100};
 	padding: 0.875rem 1rem;
 	border-radius: 8px;
 	margin-top: 0.5rem;
+	gap: 0.5rem;
+`;
+
+export const SearchBarContainer = styled.div`
+	display: flex;
+	align-items: center;
+	width: 100%;
+	gap: 0.5rem;
+`;
+
+export const FiltersDetailsContainer = styled.div`
+	display: flex;
+	align-items: flex-start;
+	width: 100%;
 	gap: 0.5rem;
 `;
 

@@ -13,10 +13,14 @@ import {
 	FilterMenuContent,
 	FilterMenuCountContainer,
 	FilterMenuHeader,
+	FiltersDetailsContainer,
+	SearchBarContainer,
 } from './ExpensesTableFilters.styles';
 import { useDebounce } from '@/hooks/useDebounce';
 import { useListCardsApi } from '@/hooks/api/cards/useListCards.api';
 import { EExpensesTypesFilter } from '../../../../constants/expensesFilters';
+import { ExpenseInMonth } from '@/models/ExpenseInMonth';
+import { formatCurrency } from '@/helpers/formatCurrency';
 
 type Filter = {
 	type: 'search' | 'cards' | 'expenses';
@@ -25,9 +29,14 @@ type Filter = {
 
 type OnModifyFilterOnSearchParams = (filters: Filter[]) => void;
 
-export function ExpensesFilters() {
+interface IExpensesTableFiltersProps {
+	expenses?: ExpenseInMonth[];
+}
+
+export function ExpensesTableFilters({ expenses }: Readonly<IExpensesTableFiltersProps>) {
 	const router = useRouter();
 	const searchParams = useSearchParams();
+	const hasAppliedFilters = searchParams.size > 0;
 
 	function handleModifyFilterOnSearchParams(filters: Filter[]) {
 		const params = new URLSearchParams(searchParams.toString());
@@ -45,26 +54,37 @@ export function ExpensesFilters() {
 		router.push(hasFilters ? `?${params.toString()}` : '', { scroll: false });
 	}
 
+	const totalExpensesValue = expenses?.reduce((acc, expense) => acc + expense.valueParcel, 0) ?? 0;
+
 	return (
 		<FilterContainer>
-			<SearchBar onModifyFilterOnSearchParams={handleModifyFilterOnSearchParams} />
-			<Popover
-				overlay={<FilterMenu onModifyFilterOnSearchParams={handleModifyFilterOnSearchParams} />}
-				sideOffset={8}
-				maxWidth={800}
-			>
-				<FilterButton type="button">
-					<FunnelIcon size={24} />
-					Filtros
-					{searchParams.size > 0 && (
-						<FilterMenuCountContainer>
-							<Text size="xs" weight="600" color="white">
-								{searchParams.size}
-							</Text>
-						</FilterMenuCountContainer>
-					)}
-				</FilterButton>
-			</Popover>
+			<SearchBarContainer>
+				<SearchBar onModifyFilterOnSearchParams={handleModifyFilterOnSearchParams} />
+				<Popover
+					overlay={<FilterMenu onModifyFilterOnSearchParams={handleModifyFilterOnSearchParams} />}
+					sideOffset={8}
+					maxWidth={800}
+				>
+					<FilterButton type="button">
+						<FunnelIcon size={24} />
+						Filtros
+						{hasAppliedFilters && (
+							<FilterMenuCountContainer>
+								<Text size="xs" weight="600" color="white">
+									{searchParams.size}
+								</Text>
+							</FilterMenuCountContainer>
+						)}
+					</FilterButton>
+				</Popover>
+			</SearchBarContainer>
+			{hasAppliedFilters && (
+				<FiltersDetailsContainer>
+					<Text size="small" color="gray300" weight="500">
+						Exibindo {expenses?.length} despesa(s) com total de {formatCurrency(totalExpensesValue)}
+					</Text>
+				</FiltersDetailsContainer>
+			)}
 		</FilterContainer>
 	);
 }
