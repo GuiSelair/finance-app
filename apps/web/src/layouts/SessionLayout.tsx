@@ -2,6 +2,7 @@ import { SessionContainer, SessionDetails, Welcome, SessionNavigation } from '@/
 import { PropsWithChildren } from 'react';
 import { useNavigation } from '@/hooks/useNavigation';
 import { NavLink } from '@/components/NavLink';
+import { NavigationDropmenu } from '@/components/NavigationDropmenu';
 
 export const SessionLayout = ({ children }: PropsWithChildren) => {
 	const { primaryPageSelected, sessionNavigationMapper: sessionNavigationMap, sessionPageSelected } = useNavigation();
@@ -23,6 +24,13 @@ export const SessionLayout = ({ children }: PropsWithChildren) => {
 		else return 'Boa noite';
 	};
 
+	const sessionMenuItems =
+		sessionNavigationMap?.navigation?.map(page => ({
+			href: `/${primaryPageSelected}/${page.path}`,
+			label: page.name,
+			isActive: sessionPageSelected === page.path,
+		})) ?? [];
+
 	return (
 		<>
 			<SessionContainer>
@@ -35,16 +43,13 @@ export const SessionLayout = ({ children }: PropsWithChildren) => {
 					)}
 				</SessionDetails>
 				<SessionNavigation>
-					{sessionNavigationMap?.navigation?.map(page => (
-						<NavLink
-							key={page.name}
-							href={`/${primaryPageSelected}/${page.path}`}
-							isActive={sessionPageSelected === page.path}
-						>
-							{page.name}
+					{sessionMenuItems.map(item => (
+						<NavLink key={item.href} href={item.href} isActive={item.isActive}>
+							{item.label}
 						</NavLink>
 					))}
 				</SessionNavigation>
+				<NavigationDropmenu label="Abrir menu da seção" items={sessionMenuItems} align="end" />
 			</SessionContainer>
 			{children}
 		</>

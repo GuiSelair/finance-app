@@ -16,7 +16,7 @@ export default function SharePeopleListPage() {
 						<LayoutBox.HeaderTitle>Cadastros</LayoutBox.HeaderTitle>
 						<LayoutBox.HeaderButtonsContainer>
 							<Link href={'/registrations/share-people'}>
-								<Button variant="ghost" size="md">
+								<Button variant="ghost" size="sm">
 									Adicionar pessoa
 								</Button>
 							</Link>
@@ -43,7 +43,7 @@ export default function SharePeopleListPage() {
 					<LayoutBox.HeaderTitle>Cadastros</LayoutBox.HeaderTitle>
 					<LayoutBox.HeaderButtonsContainer>
 						<Link href={'/registrations/share-people'}>
-							<Button variant="ghost" size="md">
+							<Button variant="ghost" size="sm">
 								Adicionar pessoa
 							</Button>
 						</Link>

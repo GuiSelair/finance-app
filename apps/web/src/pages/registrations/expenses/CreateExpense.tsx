@@ -8,7 +8,14 @@ import { PaymentMethodSelectionSection } from './components/PaymentMethodSelecti
 import { ShareExpenseSection } from './components/ShareExpenseSection';
 import { CREATE_EXPENSE_TAB_ORDER } from './constants/tabOrder';
 import { useCreateExpense } from './hooks/useCreateExpense';
-import { RegisterExpenseForm, SubmitShortcutHint, ValueInput } from './ExpenseForm.styles';
+import {
+	ExpenseField,
+	ExpenseSwitches,
+	ExpenseValuesRow,
+	RegisterExpenseForm,
+	SubmitShortcutHint,
+	ValueInput,
+} from './ExpenseForm.styles';
 
 const CREATE_EXPENSE_FORM_ID = 'create-expense-form';
 
@@ -49,8 +56,8 @@ export default function CreateExpensePage() {
 
 						<PaymentMethodSelectionSection />
 
-						<Flex gap="1rem" alignItems="flex-start" margin="1rem 0 0 0">
-							<div>
+						<ExpenseValuesRow>
+							<ExpenseField>
 								<InputLabel>
 									Valor total:
 									<ValueInput
@@ -61,8 +68,8 @@ export default function CreateExpensePage() {
 										{...register('totalValue')}
 									/>
 								</InputLabel>
-							</div>
-							<div>
+							</ExpenseField>
+							<ExpenseField>
 								<InputLabel>
 									Parcelas:
 									<ValueInput
@@ -74,38 +81,40 @@ export default function CreateExpensePage() {
 										})}
 									/>
 								</InputLabel>
-							</div>
-							<div>
+							</ExpenseField>
+							<ExpenseField>
 								<InputLabel>
 									Valor por parcela:
 									<ValueInput prefix="R$" disabled tabIndex={-1} {...register('parcelValue')} />
 								</InputLabel>
-							</div>
-							<Flex flexDirection="column" gap="0.5rem" whiteSpace="nowrap">
-								<InputLabel>Despesa fixa:</InputLabel>
-								<Controller
-									name="isRecurring"
-									render={({ field: { value, ...field } }) => (
-										<Switch checked={value} tabIndex={CREATE_EXPENSE_TAB_ORDER.isRecurring} {...field} />
-									)}
-								/>
-							</Flex>
-							<Flex flexDirection="column" gap="0.5rem" whiteSpace="nowrap">
-								<InputLabel>Compartilhar despesa:</InputLabel>
-								<Controller
-									name="isSplit"
-									render={({ field: { value, ...field } }) => (
-										<Switch
-											id="isSplit"
-											isDisabled={isExpenseAmountNonFilled}
-											checked={value}
-											tabIndex={CREATE_EXPENSE_TAB_ORDER.isSplit}
-											{...field}
-										/>
-									)}
-								/>
-							</Flex>
-						</Flex>
+							</ExpenseField>
+							<ExpenseSwitches>
+								<Flex flexDirection="column" gap="0.5rem" whiteSpace="nowrap">
+									<InputLabel>Despesa fixa:</InputLabel>
+									<Controller
+										name="isRecurring"
+										render={({ field: { value, ...field } }) => (
+											<Switch checked={value} tabIndex={CREATE_EXPENSE_TAB_ORDER.isRecurring} {...field} />
+										)}
+									/>
+								</Flex>
+								<Flex flexDirection="column" gap="0.5rem" whiteSpace="nowrap">
+									<InputLabel>Compartilhar despesa:</InputLabel>
+									<Controller
+										name="isSplit"
+										render={({ field: { value, ...field } }) => (
+											<Switch
+												id="isSplit"
+												isDisabled={isExpenseAmountNonFilled}
+												checked={value}
+												tabIndex={CREATE_EXPENSE_TAB_ORDER.isSplit}
+												{...field}
+											/>
+										)}
+									/>
+								</Flex>
+							</ExpenseSwitches>
+						</ExpenseValuesRow>
 						{isSplit && <ShareExpenseSection />}
 					</RegisterExpenseForm>
 				</LayoutBox.Content>

@@ -2,7 +2,9 @@ import styled from 'styled-components';
 import { Content, Overlay } from '@radix-ui/react-dialog';
 
 export const ModalContainer = styled(Content)`
-	width: 50rem;
+	width: min(50rem, calc(100vw - 2rem));
+	max-height: calc(100vh - 2rem);
+	overflow-y: auto;
 	background: ${({ theme }) => theme.colors.white};
 	border-radius: 0.5rem;
 	padding: 2rem 1.5rem;

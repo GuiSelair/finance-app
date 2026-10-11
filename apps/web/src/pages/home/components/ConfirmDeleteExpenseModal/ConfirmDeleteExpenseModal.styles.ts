@@ -12,6 +12,10 @@ export const ConfirmDeleteExpenseFooterContainer = styled.footer`
 	justify-content: flex-end;
 	margin-top: 2rem;
 	gap: 0.5rem;
+
+	@media (max-width: ${({ theme }) => theme.breakpoints.mobileMax}) {
+		flex-wrap: wrap;
+	}
 `;
 
 export const DeleteAllParcelsButton = styled(Button)`

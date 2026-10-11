@@ -36,4 +36,13 @@ export const Grid = styled.div.withConfig({
 	gap: ${({ gap }) => gap};
 	grid-template-columns: ${({ gridTemplateColumns }) => gridTemplateColumns};
 	grid-template-rows: ${({ gridTemplateRows }) => gridTemplateRows};
+
+	@media (max-width: ${({ theme }) => theme.breakpoints.mobileMax}) {
+		grid-template-columns: minmax(0, 1fr);
+	}
+
+	@media (min-width: ${({ theme }) => theme.breakpoints.tabletMin}) and (max-width: ${({ theme }) =>
+			theme.breakpoints.tabletMax}) {
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+	}
 `;

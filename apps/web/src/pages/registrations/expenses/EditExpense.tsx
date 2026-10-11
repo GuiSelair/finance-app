@@ -6,7 +6,7 @@ import { TextInput, InputLabel, ActionButtons } from '@/components/Form';
 
 import { PaymentMethodSelectionSection } from './components/PaymentMethodSelection';
 import { useEditExpense } from './hooks/useEditExpense';
-import { RegisterExpenseForm, ValueInput } from './ExpenseForm.styles';
+import { ExpenseField, ExpenseSwitches, ExpenseValuesRow, RegisterExpenseForm, ValueInput } from './ExpenseForm.styles';
 
 export default function EditExpensePage() {
 	const { editExpenseSubmit, goBack, isEditing, formSchema, isLoading, isParceled } = useEditExpense();
@@ -58,8 +58,8 @@ export default function EditExpensePage() {
 
 						<PaymentMethodSelectionSection isEditMode />
 
-						<Flex gap="1rem" alignItems="flex-start" margin="1rem 0 0 0">
-							<div>
+						<ExpenseValuesRow>
+							<ExpenseField>
 								<InputLabel>
 									Valor total:
 									<ValueInput
@@ -69,8 +69,8 @@ export default function EditExpensePage() {
 										{...register('totalValue')}
 									/>
 								</InputLabel>
-							</div>
-							<div>
+							</ExpenseField>
+							<ExpenseField>
 								<InputLabel>
 									Parcelas:
 									<ValueInput
@@ -81,21 +81,23 @@ export default function EditExpensePage() {
 										})}
 									/>
 								</InputLabel>
-							</div>
-							<div>
+							</ExpenseField>
+							<ExpenseField>
 								<InputLabel>
 									Valor por parcela:
 									<ValueInput prefix="R$" {...register('parcelValue')} />
 								</InputLabel>
-							</div>
-							<Flex flexDirection="column" gap="0.5rem" whiteSpace="nowrap">
-								<InputLabel>Despesa fixa:</InputLabel>
-								<Controller
-									name="isRecurring"
-									render={({ field: { value, ...field } }) => <Switch checked={value} {...field} />}
-								/>
-							</Flex>
-						</Flex>
+							</ExpenseField>
+							<ExpenseSwitches>
+								<Flex flexDirection="column" gap="0.5rem" whiteSpace="nowrap">
+									<InputLabel>Despesa fixa:</InputLabel>
+									<Controller
+										name="isRecurring"
+										render={({ field: { value, ...field } }) => <Switch checked={value} {...field} />}
+									/>
+								</Flex>
+							</ExpenseSwitches>
+						</ExpenseValuesRow>
 					</RegisterExpenseForm>
 				</LayoutBox.Content>
 				<LayoutBox.Footer>

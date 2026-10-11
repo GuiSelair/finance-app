@@ -8,10 +8,14 @@ export const FilterContainer = styled.section`
 	flex-direction: column;
 	align-items: center;
 	background: ${props => props.theme.colors.green100};
-	padding: 0.875rem 1rem;
+	padding: 0.5rem 0.75rem;
 	border-radius: 8px;
 	margin-top: 0.5rem;
 	gap: 0.5rem;
+
+	@media (max-width: ${({ theme }) => theme.breakpoints.tabletMax}) {
+		margin-top: 0;
+	}
 `;
 
 export const SearchBarContainer = styled.div`
@@ -19,6 +23,11 @@ export const SearchBarContainer = styled.div`
 	align-items: center;
 	width: 100%;
 	gap: 0.5rem;
+
+	> div:first-child {
+		flex: 1;
+		min-width: 0;
+	}
 `;
 
 export const FiltersDetailsContainer = styled.div`
@@ -43,6 +52,10 @@ export const FilterMenuContainer = styled(Flex)`
 	width: 400px;
 	flex-direction: column;
 	gap: 0.5rem;
+
+	@media (max-width: ${({ theme }) => theme.breakpoints.tabletMax}) {
+		width: 100%;
+	}
 `;
 
 export const FilterMenuHeader = styled.header`
