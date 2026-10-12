@@ -7,6 +7,30 @@ export const RegisterCardsForm = styled.form`
 	gap: 1rem;
 `;
 
+export const CardFieldsRow = styled.div`
+	display: flex;
+	gap: 1.5rem;
+
+	@media (max-width: ${({ theme }) => theme.breakpoints.mobileMax}) {
+		flex-direction: column;
+
+		> * {
+			flex: none;
+			width: 100%;
+		}
+	}
+
+	@media (min-width: ${({ theme }) => theme.breakpoints.tabletMin}) and (max-width: ${({ theme }) =>
+			theme.breakpoints.tabletMax}) {
+		flex-wrap: wrap;
+
+		> * {
+			flex: 1 1 calc(50% - 0.75rem);
+			max-width: calc(50% - 0.75rem);
+		}
+	}
+`;
+
 export const CreditCardIcon = styled(CreditCard)`
 	width: 2rem;
 	height: 2rem;

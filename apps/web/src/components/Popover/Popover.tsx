@@ -15,6 +15,7 @@ export interface PopoverProps {
 	sideOffset?: number;
 	align?: 'start' | 'center' | 'end';
 	alignOffset?: number;
+	collisionPadding?: number;
 	zIndex?: number;
 }
 
@@ -32,6 +33,7 @@ export const Popover = forwardRef<HTMLDivElement, PropsWithChildren<PopoverProps
 		sideOffset = 5,
 		align = 'center',
 		alignOffset = 5,
+		collisionPadding,
 		zIndex,
 	},
 	ref,
@@ -49,6 +51,7 @@ export const Popover = forwardRef<HTMLDivElement, PropsWithChildren<PopoverProps
 					side={side}
 					align={align}
 					alignOffset={alignOffset}
+					collisionPadding={collisionPadding}
 					onEscapeKeyDown={onClose}
 					onInteractOutside={onClose}
 				>

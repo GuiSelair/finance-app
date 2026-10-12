@@ -20,7 +20,7 @@ export default function CardTotalizerPage() {
 					<LayoutBox.HeaderTitle>Resumo por cartões</LayoutBox.HeaderTitle>
 					<LayoutBox.HeaderButtonsContainer>
 						<Link href={'/registrations/cards'}>
-							<Button variant="ghost" size="md">
+							<Button variant="ghost" size="sm">
 								Criar cartão
 							</Button>
 						</Link>

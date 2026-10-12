@@ -12,6 +12,15 @@ export const HeaderContainer = styled.header`
 	}
 `;
 
+export const PrimaryNavigation = styled.nav`
+	display: flex;
+	align-items: center;
+
+	@media (max-width: ${({ theme }) => theme.breakpoints.tabletMax}) {
+		display: none;
+	}
+`;
+
 export const Logo = styled(Link)`
 	margin-right: 48px;
 	font-size: ${props => props.theme.fontSizes.regular};
@@ -21,6 +30,14 @@ export const Logo = styled(Link)`
 	> strong {
 		font-size: ${props => props.theme.fontSizes.large};
 		font-weight: 700;
+	}
+
+	@media (max-width: ${({ theme }) => theme.breakpoints.mobileMax}) {
+		margin-right: 0.75rem;
+
+		> strong {
+			font-size: ${({ theme }) => theme.fontSizes.medium};
+		}
 	}
 `;
 
@@ -40,6 +57,10 @@ export const AddExpenseLink = styled(Link)`
 
 	&:hover {
 		opacity: 0.8;
+	}
+
+	@media (max-width: ${({ theme }) => theme.breakpoints.tabletMax}) {
+		display: none;
 	}
 `;
 

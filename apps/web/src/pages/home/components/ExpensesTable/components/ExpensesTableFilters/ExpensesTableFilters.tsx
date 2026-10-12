@@ -63,10 +63,12 @@ export function ExpensesTableFilters({ expenses }: Readonly<IExpensesTableFilter
 				<Popover
 					overlay={<FilterMenu onModifyFilterOnSearchParams={handleModifyFilterOnSearchParams} />}
 					sideOffset={8}
+					align="end"
+					collisionPadding={16}
 					maxWidth={800}
 				>
-					<FilterButton type="button">
-						<FunnelIcon size={24} />
+					<FilterButton type="button" size="sm">
+						<FunnelIcon size={18} />
 						Filtros
 						{hasAppliedFilters && (
 							<FilterMenuCountContainer>
@@ -100,10 +102,11 @@ function SearchBar({ onModifyFilterOnSearchParams }: { onModifyFilterOnSearchPar
 
 	return (
 		<TextInput
-			icon={() => <MagnifyingGlassIcon size={24} />}
+			icon={() => <MagnifyingGlassIcon size={18} />}
 			placeholder="Pesquise pelo nome da despesa"
 			value={search}
 			onChange={e => setSearch(e.target.value)}
+			size="sm"
 		/>
 	);
 }

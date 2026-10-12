@@ -33,6 +33,12 @@ export const FieldDescription = styled.span`
 			margin-left: 0.5rem;
 		}
 	}
+
+	@media (max-width: ${({ theme }) => theme.breakpoints.tabletMax}) {
+		strong {
+			margin-left: 0;
+		}
+	}
 `;
 
 export const CardDetails = styled(Flex)`

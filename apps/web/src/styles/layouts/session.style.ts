@@ -6,6 +6,16 @@ export const SessionContainer = styled.div`
 	justify-content: space-between;
 
 	margin: 3.375rem 0 4rem;
+
+	@media (max-width: ${({ theme }) => theme.breakpoints.tabletMax}) {
+		gap: 1rem;
+		margin: 2rem 0 2.5rem;
+	}
+
+	@media (max-width: ${({ theme }) => theme.breakpoints.mobileMax}) {
+		align-items: center;
+		margin: 1.5rem 0 2rem;
+	}
 `;
 
 export const SessionDetails = styled.div`
@@ -19,6 +29,24 @@ export const SessionDetails = styled.div`
 		line-height: 100%;
 		letter-spacing: -0.05em;
 		display: inline-block;
+	}
+
+	@media (max-width: ${({ theme }) => theme.breakpoints.tabletMax}) {
+		flex-wrap: wrap;
+		gap: 0.5rem;
+
+		h1 {
+			font-size: ${({ theme }) => theme.fontSizes.large};
+		}
+	}
+
+	@media (max-width: ${({ theme }) => theme.breakpoints.mobileMax}) {
+		align-items: center;
+		flex-wrap: wrap;
+
+		h1 {
+			font-size: 1.75rem;
+		}
 	}
 `;
 
@@ -34,6 +62,17 @@ export const Welcome = styled.span`
 	> strong {
 		font-weight: 700;
 	}
+
+	@media (max-width: ${({ theme }) => theme.breakpoints.mobileMax}) {
+		margin-left: 0;
+		padding-left: 0;
+		border-left: none;
+		white-space: nowrap;
+	}
 `;
 
-export const SessionNavigation = styled.nav``;
+export const SessionNavigation = styled.nav`
+	@media (max-width: ${({ theme }) => theme.breakpoints.tabletMax}) {
+		display: none;
+	}
+`;

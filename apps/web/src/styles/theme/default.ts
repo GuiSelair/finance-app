@@ -55,4 +55,10 @@ export const defaultTheme = {
 		regular: '8px',
 		large: '16px',
 	},
+
+	breakpoints: {
+		mobileMax: '899px',
+		tabletMin: '900px',
+		tabletMax: '1199px',
+	},
 } as const;

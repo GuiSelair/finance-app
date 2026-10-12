@@ -17,6 +17,11 @@ export const BaseContent = styled.div`
 	padding: 48px 0 16px;
 	margin: 0 auto;
 
+	@media (max-width: ${({ theme }) => theme.breakpoints.tabletMax}) {
+		padding-right: 1rem;
+		padding-left: 1rem;
+	}
+
 	display: flex;
 	flex-direction: column;
 `;

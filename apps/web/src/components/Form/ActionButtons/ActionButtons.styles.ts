@@ -6,4 +6,8 @@ export const ButtonsContainer = styled.div`
 	align-items: center;
 	justify-content: flex-end;
 	gap: 0.5rem;
+
+	@media (max-width: ${({ theme }) => theme.breakpoints.mobileMax}) {
+		flex-wrap: wrap;
+	}
 `;

@@ -15,6 +15,15 @@ export const ExpenseBaseDetails = styled.div`
 	margin-bottom: 1.5rem;
 	gap: 1rem;
 
+	@media (max-width: ${({ theme }) => theme.breakpoints.mobileMax}) {
+		grid-template-columns: minmax(0, 1fr);
+	}
+
+	@media (min-width: ${({ theme }) => theme.breakpoints.tabletMin}) and (max-width: ${({ theme }) =>
+			theme.breakpoints.tabletMax}) {
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+	}
+
 	> div {
 		span {
 			font-size: 1rem;
@@ -43,6 +52,15 @@ export const ExpenseAmountDetails = styled.div`
 	grid-template-columns: repeat(4, 1fr);
 	gap: 2rem;
 	margin-bottom: 1rem;
+
+	@media (max-width: ${({ theme }) => theme.breakpoints.mobileMax}) {
+		grid-template-columns: minmax(0, 1fr);
+	}
+
+	@media (min-width: ${({ theme }) => theme.breakpoints.tabletMin}) and (max-width: ${({ theme }) =>
+			theme.breakpoints.tabletMax}) {
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+	}
 `;
 
 export const ExpenseAmountDetailsItem = styled.div`
@@ -82,6 +100,10 @@ export const ExpenseDescriptionAndCardDetails = styled.div`
 	grid-template-columns: 1fr 134px;
 	gap: 1rem;
 	margin-bottom: 1rem;
+
+	@media (max-width: ${({ theme }) => theme.breakpoints.mobileMax}) {
+		grid-template-columns: minmax(0, 1fr);
+	}
 `;
 
 export const ExpenseDescription = styled.div`

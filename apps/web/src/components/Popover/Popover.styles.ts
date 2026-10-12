@@ -33,6 +33,10 @@ export const PopoverContent = styled(Content).withConfig({
 	flex-direction: column;
 	gap: 8px;
 	box-shadow: 0 6px 32px 0 rgba(0 0 0 / 20%);
+
+	@media (max-width: ${({ theme }) => theme.breakpoints.tabletMax}) {
+		max-width: calc(100vw - 2rem);
+	}
 `;
 
 export const PopoverArrow = styled(Arrow)`

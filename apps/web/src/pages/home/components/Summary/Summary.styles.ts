@@ -6,4 +6,17 @@ export const SummaryContainer = styled.div`
 	gap: 74px;
 	align-items: center;
 	margin-bottom: 2.5rem;
+
+	@media (max-width: ${({ theme }) => theme.breakpoints.tabletMax}) {
+		display: flex;
+		flex-wrap: nowrap;
+		gap: 1rem;
+		overflow-x: auto;
+		margin-bottom: 1.5rem;
+
+		> article {
+			flex: 0 0 16rem;
+			min-width: 16rem;
+		}
+	}
 `;

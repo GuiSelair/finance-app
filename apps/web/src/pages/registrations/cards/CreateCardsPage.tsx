@@ -5,7 +5,7 @@ import { LayoutBox, SEO, Flex } from '@/components';
 import { ActionButtons, InputLabel, Select, TextInput } from '@/components/Form';
 
 import { useCreateCards } from './hooks/useCreateCards';
-import { RegisterCardsForm, CreditCardIcon } from './CreateCardsPage.styles';
+import { RegisterCardsForm, CreditCardIcon, CardFieldsRow } from './CreateCardsPage.styles';
 
 export default function CreateCardsPage() {
 	const { availableCardsOptions, handleCancel, handleCreateCard, isCreatingCard, formSchema } = useCreateCards();
@@ -36,7 +36,7 @@ export default function CreateCardsPage() {
 								/>
 							</InputLabel>
 						</Flex>
-						<Flex gap="1.5rem">
+						<CardFieldsRow>
 							<Flex flex={2} alignItems="center" gap="1rem">
 								<InputLabel>
 									Bandeira:
@@ -77,7 +77,7 @@ export default function CreateCardsPage() {
 									/>
 								</InputLabel>
 							</Flex>
-						</Flex>
+						</CardFieldsRow>
 					</RegisterCardsForm>
 				</LayoutBox.Content>
 				<LayoutBox.Footer>
