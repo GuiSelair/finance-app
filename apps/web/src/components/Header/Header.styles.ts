@@ -10,7 +10,6 @@ export const HeaderContainer = styled.header`
 		display: flex;
 		align-items: center;
 	}
-
 `;
 
 export const PrimaryNavigation = styled.nav`

@@ -11,7 +11,7 @@ export interface BaseInputProps extends Omit<React.InputHTMLAttributes<HTMLInput
 }
 
 export const TextInput = forwardRef<HTMLInputElement, BaseInputProps>(function TextInput(
-	{ icon: Icon, id, error, prefix, disabled, width, size = 'md', className, ...rest },
+	{ icon: Icon, error, prefix, disabled, size = 'md', className, ...rest },
 	ref,
 ) {
 	return (
